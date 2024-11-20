@@ -1,0 +1,28 @@
+<%= form_for @article do |f| %>
+  <!-- Error Messages -->
+  <% if @article.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h4>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Form Fields -->
+  <div class="form-group">
+    <%= f.label :title, class: 'form-label' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :text, class: 'form-label' %>
+    <%= f.text_area :text, class: 'form-control', rows: 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit @article.new_record? ? 'Create Article' : 'Save Changes', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <!-- Mensaje de bienvenida -->
+  <p class="lead">Welcome <%= @email %>!</p>
+
+  <!-- Instrucciones para confirmar el correo -->
+  <p class="mb-3">You can confirm your account email through the link below:</p>
+
+  <!-- Enlace para confirmar el correo -->
+  <p>
+    <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'btn btn-primary' %>
+  </p>
+</div>

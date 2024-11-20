@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <!-- Saludo con el correo -->
+  <p class="lead">Hello <%= @email %>!</p>
+
+  <!-- Verificamos si el correo está en proceso de ser cambiado -->
+  <% if @resource.try(:unconfirmed_email?) %>
+    <p class="alert alert-info">
+      We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.
+    </p>
+  <% else %>
+    <p class="alert alert-success">
+      We're contacting you to notify you that your email has been changed to <%= @resource.email %>.
+    </p>
+  <% end %>
+</div>
+

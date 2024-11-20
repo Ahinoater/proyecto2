@@ -1,0 +1,36 @@
+<section class="article-content py-5">
+  <div class="container">
+
+    <!-- Título del Artículo -->
+    <h1 class="display-4 mb-4"><%= @article.title %></h1>
+
+    <!-- Contenido del Artículo -->
+    <p><%= @article.text %></p>
+
+    <!-- Comentarios -->
+    <h2 class="mt-5">Comentarios</h2>
+    <div class="comments-list mb-4">
+      <% @article.comments.each do |comment| %>
+        <div class="comment-card border p-3 mb-3 rounded">
+          <p><strong>Comentador:</strong> <%= comment.user.email %></p>
+          <p><strong>Comentario:</strong> <%= comment.body %></p>
+          
+          <!-- Botón Eliminar Comentario: Solo si el usuario es el dueño del comentario -->
+          <% if current_user == comment.user %>
+            <%= button_to 'Eliminar Comentario', [comment.article, comment], method: :delete, data: { confirm: '¿Estás seguro de que quieres eliminar este comentario?' }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Añadir un Nuevo Comentario -->
+    <h3 class="mt-5">Añadir un Comentario:</h3>
+    <%= render 'comments/form' %> <!-- Formulario para añadir comentarios -->
+
+    <!-- Links para Editar o Volver -->
+    <div class="mt-4">
+      <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-primary' %>
+      <%= link_to 'Back', articles_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Blog" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+  
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <% unless (controller_name == "sessions" && action_name == "new") || (controller_name == "registrations" && action_name == "new") %>
+        
+      <% end %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <% unless (controller_name == "sessions" && action_name == "new") || (controller_name == "registrations" && action_name == "new") %>
+        <div class="footer-content">
+          <% if user_signed_in? %>
+            <span>Welcome, <%= current_user.email %></span>
+            <%= form_tag(destroy_user_session_path, method: :delete) do %>
+              <%= submit_tag "Log Out", class: "btn btn-danger" %>
+            <% end %>
+          <% else %>
+            <div class="auth-buttons">
+              <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* Contenedor para los botones */
+.auth-buttons {
+    display: flex;           /* Usamos flexbox para alinear los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px;               /* Espacio entre los botones */
+    margin-top: 20px;        /* Espacio encima de los botones, si es necesario */
+  }
+  
+  /* Estilo general de los botones */
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none; /* Elimina el subrayado en los enlaces */
+    display: inline-block; /* Para que se comporten como botones */
+  }
+  
+  /* Estilo del botón Login */
+  .btn-primary {
+    background-color: #000080;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #000080;
+  }
+  
+  /* Estilo del botón Sign up */
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+
+  /* Ejemplo de estilo personalizado */
+.form-group {
+    margin-bottom: 1.5rem; /* Espacio entre los campos */
+  }
+  
+  
+  
